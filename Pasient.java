@@ -1,11 +1,11 @@
 class Pasient{
   private String navn;
-  private int fnr;
+  private String fnr;
   private static int ID;
   private int denneID;
   private Stabel<Resept> resepter;
 
-  public Pasient(String nvn, int fodselsnummer){
+  public Pasient(String nvn, String fodselsnummer){
     navn = nvn;
     fnr = fodselsnummer;
     denneID = ID;
@@ -18,5 +18,9 @@ class Pasient{
 
   public void leggTilResept(Resept res){
     resepter.leggPaa(res);
+  }
+
+  public String toString(){
+    return (navn+", "+fnr);
   }
 }

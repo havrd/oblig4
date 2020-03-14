@@ -16,14 +16,31 @@ class Lenkeliste<T> implements Liste<T>{
     private Node naaverendeNode = start;
 
     public boolean hasNext(){
-      if(naaverendeNode==null || naaverendeNode.neste == null) return false;
+      if(iteratorPosisjon == 0 && naaverendeNode != null) return true;
+      else if(naaverendeNode==null || naaverendeNode.neste == null) return false;
       else return true;
     }
 
     public T next(){
-      naaverendeNode = naaverendeNode.neste;
-      iteratorPosisjon++;
-      return naaverendeNode.data;
+      if(iteratorPosisjon==0){
+        iteratorPosisjon++;
+        return naaverendeNode.data;
+      }
+      else{
+        naaverendeNode = naaverendeNode.neste;
+        iteratorPosisjon++;
+        return naaverendeNode.data;
+      }
+    }
+
+    public void remove(){
+      if(iteratorPosisjon==0){
+        throw new UgyldigListeIndeks(-1);
+      }
+      else{
+        fjern(iteratorPosisjon-1);
+        iteratorPosisjon--;
+      }
     }
   }
 
