@@ -10,6 +10,8 @@ class TestSystem{
     //lege.skrivHvitResept(nark, pas, 3);
     spes.skrivHvitResept(vane, pas, 3);
     spes.skrivHvitResept(vanlig, pas, 3);
+    spes.skrivBlaaResept(vanlig, pas, 333);
+
     Lenkeliste<Resept> listeSpes = spes.hentResepter();
     //System.out.println(listeSpes.hent(0) instanceof Resept);
 

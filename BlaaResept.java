@@ -17,6 +17,6 @@ class BlaaResept extends Resept{
 
   //Definerer toString
   public String toString(){
-    return ("Legemiddel: "+legemiddel.hentNavn() +"\nUtskrivende lege: "+utskrivendeLege.hentNavn()+"\nPasient: "+pasient+"\nAntall reiterasjoner: "+reit);
+    return ("Legemiddel: "+legemiddel.hentNavn() +"\nUtskrivende lege: "+utskrivendeLege.hentNavn()+"\nPasient: "+pasient.hentNavn()+"\nAntall reiterasjoner: "+reit+"\nPris: "+prisAaBetale());
   }
 }

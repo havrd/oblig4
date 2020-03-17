@@ -9,12 +9,17 @@ abstract class Resept{
   //Konstruktor tar imot argumentene og lagrer dem i variabler. oker ogsaa den statiske variablen med 1, og setter ID paa
   //instansene som blir opprettet
   public Resept(Legemiddel lm, Lege l, Pasient pid, int r){
-    legemiddel = lm;
-    utskrivendeLege = l;
-    pasient = pid;
-    reit = r;
-    denneId = id;
-    id++;
+    if(lm==null || l==null || pid==null){
+      throw new NullPointerException();
+    }
+    else{
+      legemiddel = lm;
+      utskrivendeLege = l;
+      pasient = pid;
+      reit = r;
+      denneId = id;
+      id++;
+    }
   }
 
   //Henter ID

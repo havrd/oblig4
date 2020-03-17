@@ -15,6 +15,6 @@ class Presept extends HvitResept{
 
   //Definerer toString
   public String toString(){
-    return ("Legemiddel: "+legemiddel.hentNavn() +"\nUtskrivende lege: "+utskrivendeLege.hentNavn()+"\nPasient: "+pasient+"\nAntall reiterasjoner: "+reit+"\nPris: "+this.prisAaBetale());
+    return ("Legemiddel: "+legemiddel.hentNavn() +"\nUtskrivende lege: "+utskrivendeLege.hentNavn()+"\nPasient: "+pasient+"\nAntall reiterasjoner: "+reit+"\nPris: "+prisAaBetale());
   }
 }

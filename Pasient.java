@@ -3,7 +3,7 @@ class Pasient{
   private String fnr;
   private static int ID;
   private int denneID;
-  private Stabel<Resept> resepter;
+  private Stabel<Resept> resepter = new Stabel();
 
   public Pasient(String nvn, String fodselsnummer){
     navn = nvn;
@@ -14,6 +14,18 @@ class Pasient{
 
   public Stabel hentResepter(){
     return resepter;
+  }
+
+  public String hentNavn(){
+    return navn;
+  }
+
+  public String hentFodselsnummer(){
+    return fnr;
+  }
+
+  public int hentId(){
+    return denneID;
   }
 
   public void leggTilResept(Resept res){
