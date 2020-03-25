@@ -16,7 +16,7 @@ class Lege implements Comparable<Lege>{
     return navn;
   }
 
-  public Lenkeliste hentResepter(){
+  public Lenkeliste<Resept> hentResepter(){
     return utskrevedeResepter;
   }
 
