@@ -4,6 +4,9 @@ class Lege implements Comparable<Lege>{
 
   //Konstruktor
   public Lege(String nvn){
+    if(nvn == null){
+      throw new NullPointerException();
+    }
     navn = nvn;
     utskrevedeResepter = new Lenkeliste<Resept>();
   }

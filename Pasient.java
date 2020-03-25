@@ -6,6 +6,9 @@ class Pasient{
   private Stabel<Resept> resepter = new Stabel();
 
   public Pasient(String nvn, String fodselsnummer){
+    if(nvn==null || fodselsnummer==null){
+      throw new NullPointerException();
+    }
     navn = nvn;
     fnr = fodselsnummer;
     denneID = ID;

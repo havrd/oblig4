@@ -2,8 +2,8 @@ class Vanedannende extends Legemiddel{
   protected int styrke;
 
   //Konstruktor
-  public Vanedannende(String nvn, Double virkestoff, Double prs, int styrk){
-    super(nvn, virkestoff, prs);
+  public Vanedannende(String nvn, Double prs, Double virkestoff, int styrk){
+    super(nvn, prs, virkestoff);
     styrke = styrk;
   }
 
@@ -15,5 +15,9 @@ class Vanedannende extends Legemiddel{
   //Definerer toString
   public String toString(){
     return ("Navn: "+navn +"\nVirkestoff i mg: "+mgvirkestoff+"\nPris: "+pris+"\nStyrke: "+styrke);
+  }
+
+  public String hentType(){
+    return "vanedannende";
   }
 }

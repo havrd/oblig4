@@ -7,7 +7,10 @@ abstract class Legemiddel{
 
   //Konstruktor tar imot argumentene og lagrer dem i variabler. oker ogsaa den statiske variablen med 1, og setter ID paa
   //instansene som blir opprettet
-  public Legemiddel(String nvn, Double virkestoff, Double prs){
+  public Legemiddel(String nvn, Double prs, Double virkestoff){
+    if(nvn==null || prs==null || virkestoff==null){
+      throw new NullPointerException();
+    }
     navn = nvn;
     mgvirkestoff = virkestoff;
     pris = prs;
@@ -41,5 +44,9 @@ abstract class Legemiddel{
   }
 
   abstract public String toString();
+
+  abstract public String hentType();
+
+  abstract public int hentStyrke();
 
 }
