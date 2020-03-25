@@ -25,10 +25,10 @@ class Legesystem{
 
   //Konstruktør
   public Legesystem(){
-    pasienter = new Lenkeliste();
-    legemidler = new Lenkeliste();
-    leger = new SortertLenkeliste();
-    resepter = new Lenkeliste();
+    pasienter = new Lenkeliste<Pasient>();
+    legemidler = new Lenkeliste<Legemiddel>();
+    leger = new SortertLenkeliste<Lege>();
+    resepter = new Lenkeliste<Resept>();
   }
 
   //Tar imot en streng på et filnavn og legger inn data i systemet
@@ -541,7 +541,7 @@ class Legesystem{
   //Metode for å bruke en resept
   public void brukResept(){
     Pasient valgtPasient;
-    Lenkeliste<Resept> reseptListe;
+    Stabel<Resept> reseptStabel;
     for(int i =0; i<pasienter.stoerrelse();i++){
       System.out.println(i+": "+pasienter.hent(i));
     }
@@ -563,19 +563,19 @@ class Legesystem{
       return;
     }
     valgtPasient = pasienter.hent(inputTall);
-    reseptListe = valgtPasient.hentResepter();
+    reseptStabel = valgtPasient.hentResepter();
 
     System.out.println("Valgt pasient: "+valgtPasient);
 
-    if(reseptListe.stoerrelse() == 0){
+    if(reseptStabel.stoerrelse() == 0){
       System.out.println("Denne pasienten har ingen resepter.");
       tilbake();
       return;
     }
 
     System.out.println("\nHvilken resept vil du bruke? ");
-    for(int i =0; i<reseptListe.stoerrelse();i++){
-      System.out.println(i+": "+reseptListe.hent(i).hentLegemiddel().hentNavn() + " ("+reseptListe.hent(i).hentReit()+" reit)");
+    for(int i =0; i<reseptStabel.stoerrelse();i++){
+      System.out.println(i+": "+reseptStabel.hent(i).hentLegemiddel().hentNavn() + " ("+reseptStabel.hent(i).hentReit()+" reit)");
     }
     System.out.print("Velg resept: >");
     try{
@@ -593,12 +593,12 @@ class Legesystem{
       return;
     }
 
-    if(reseptListe.hent(inputTall).bruk()){
-      System.out.println("Brukte resept paa "+reseptListe.hent(inputTall).hentLegemiddel().hentNavn()+". Antall gjenvaerende reit: "+reseptListe.hent(inputTall).hentReit());
+    if(reseptStabel.hent(inputTall).bruk()){
+      System.out.println("Brukte resept paa "+reseptStabel.hent(inputTall).hentLegemiddel().hentNavn()+". Antall gjenvaerende reit: "+reseptStabel.hent(inputTall).hentReit());
       tilbake();
     }
     else{
-      System.out.println("Kunne ikke bruke resept paa "+reseptListe.hent(inputTall).hentLegemiddel().hentNavn()+". Ingen gjenvaerende reit.");
+      System.out.println("Kunne ikke bruke resept paa "+reseptStabel.hent(inputTall).hentLegemiddel().hentNavn()+". Ingen gjenvaerende reit.");
       tilbake();
     }
   }
@@ -607,8 +607,8 @@ class Legesystem{
   public void skrivUtStatistikk(){
     int totVane = 0;
     int totNark = 0;
-    HashMap<String,Integer> legerMedNarkotisk = new HashMap();
-    HashMap<String,Integer> pasienterMedNarkotisk = new HashMap();
+    HashMap<String,Integer> legerMedNarkotisk = new HashMap<String,Integer>();
+    HashMap<String,Integer> pasienterMedNarkotisk = new HashMap<String,Integer>();
 
     for(Resept resept: resepter){
       if(resept.hentLegemiddel() instanceof Vanedannende) totVane++;
@@ -633,7 +633,7 @@ class Legesystem{
     }
 
     for(Pasient pasient: pasienter){
-      Lenkeliste<Resept> r = pasient.hentResepter();
+      Stabel<Resept> r = pasient.hentResepter();
       int antall = 0;
       for(Resept res: r){
         if(res.hentLegemiddel() instanceof Narkotisk){

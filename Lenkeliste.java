@@ -54,7 +54,7 @@ class Lenkeliste<T> implements Liste<T>{
     teller=0;
   }
 
-  public Iterator iterator(){
+  public Iterator<T> iterator(){
     return new LenkelisteIterator();
   }
 

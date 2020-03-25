@@ -3,12 +3,13 @@ class Pasient{
   private String fnr;
   private static int ID;
   private int denneID;
-  private Stabel<Resept> resepter = new Stabel();
+  private Stabel<Resept> resepter;
 
   public Pasient(String nvn, String fodselsnummer){
     if(nvn==null || fodselsnummer==null){
       throw new NullPointerException();
     }
+    resepter = new Stabel<Resept>();
     navn = nvn;
     fnr = fodselsnummer;
     denneID = ID;
