@@ -16,7 +16,7 @@ class Pasient{
     ID++;
   }
 
-  public Stabel hentResepter(){
+  public Stabel<Resept> hentResepter(){
     return resepter;
   }
 
